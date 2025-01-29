@@ -1,0 +1,505 @@
+
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gabriel Melo dos Santos Dias - Currículo e Portfólio</title>
+    <link rel="icon" href="C:\Users\Gabriel Melo\Downloads\istockphoto-981782034-170667a-removebg-preview.png" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f9f9f9;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* Navegação */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background-color: #fff;
+            padding: 15px 30px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            z-index: 10;
+        }
+
+        nav .logo {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: #333;
+            text-decoration: none;
+        }
+
+        nav .nav-links {
+            list-style: none;
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        nav .nav-links li {
+            margin-left: 20px;
+        }
+
+        nav .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        nav .nav-links a:hover {
+            color: #1a73e8;
+        }
+
+        /* Landing Page */
+        header {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #1a73e8;
+            color: #fff;
+            text-align: center;
+            padding: 0 20px;
+        }
+
+        header h1 {
+            font-size: 3rem;
+            font-weight: 600;
+            opacity: 0;
+            animation: fadeIn 1s forwards 0.5s;
+        }
+
+        header p {
+            font-size: 1.1rem;
+            font-weight: 400;
+            margin-bottom: 30px;
+            opacity: 0;
+            animation: fadeIn 1s forwards 0.8s;
+        }
+
+        .cta-button {
+            padding: 12px 30px;
+            background-color: #fff;
+            color: #1a73e8;
+            border: none;
+            border-radius: 4px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.3s, color 0.3s;
+            opacity: 0;
+            animation: fadeIn 1s forwards 1.1s;
+        }
+
+        .cta-button:hover {
+            background-color: #1a73e8;
+            color: #fff;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Seções */
+        section {
+            padding: 60px 20px;
+            display: none; /* Começam ocultos */
+            opacity: 0;
+            transition: opacity 1s ease;
+        }
+
+        section.visible {
+            display: block;
+            opacity: 1;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: #333;
+            font-weight: 600;
+        }
+
+        .section-title p {
+            font-size: 1rem;
+            color: #666;
+            margin-top: 10px;
+        }
+
+        .about-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .about-text {
+            max-width: 700px;
+            font-size: 1.1rem;
+            color: #555;
+            margin-bottom: 30px;
+        }
+
+        /* Espaço para Foto */
+        .about-photo {
+            margin-bottom: 30px;
+        }
+
+        .about-photo img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Linha do tempo de cursos */
+        .timeline {
+            position: relative;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            background-color: #1a73e8;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -3px;
+        }
+
+        .container-timeline {
+            padding: 10px 40px;
+            position: relative;
+            background-color: #fff;
+            width: 50%;
+            text-align: right;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+
+        .container-timeline.left {
+            left: 0;
+        }
+
+        .container-timeline.right {
+            left: 50%;
+        }
+
+        .content-timeline {
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 5px;
+        }
+
+        .content-timeline h3 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #1a73e8;
+        }
+
+        .content-timeline p {
+            font-size: 1rem;
+            color: #555;
+        }
+
+        .timeline-container {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            nav .nav-links {
+                display: none;
+            }
+
+            header h1 {
+                font-size: 2.2rem;
+            }
+
+            .cta-button {
+                font-size: 1rem;
+                padding: 10px 20px;
+            }
+
+            .container-timeline {
+                width: 100%;
+                text-align: left;
+            }
+
+            .timeline::after {
+                left: 30px;
+            }
+        }
+    </style>
+</head>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meu Site</title>
+    <script>
+        document.addEventListener("keydown", function (e) {
+            if (
+                (e.ctrlKey && e.key.toLowerCase() === "u") || 
+                (e.key === "F12") || 
+                (e.ctrlKey && e.shiftKey && e.key.toLowerCase() === "i")
+            ) {
+                e.preventDefault();
+            }
+        });
+    </script>
+</head>
+
+
+<body>
+    <nav>
+        
+        <a href="#landing" class="logo">Gabriel Melo dos Santos Dias</a>
+        <ul class="nav-links">
+            <li><a href="#about">Sobre</a></li>
+            <li><a href="#courses">Cursos Realizados</a></li>
+            <li><a href="#extracurricular">Atividades</a></li>
+            <li><a href="#formacao-academica">Formação</a></li>
+            <li><a href="#contact">Contato</a></li>
+            
+        </ul>
+    </nav>
+
+    <!-- Landing Page -->
+    <header id="landing">
+        <div>
+            <h1>Olá, eu sou Gabriel Melo!</h1>
+            <p>Estudante do Ensino Médio e do curso de Redes de Computadores.</p>
+            <a href="#about" class="cta-button">Saiba mais sobre mim</a>
+        </div>
+    </header>
+
+    <!-- Sobre Mim -->
+    <section id="about">
+        <div class="section-title">
+            <h2>Sobre Mim</h2>
+            <p>Quem sou eu e o que faço!</p>
+        </div>
+        <div class="about-content">
+            <!-- Espaço para sua foto -->
+            <div class="about-photo">
+                <!-- Substitua o "sua_foto.jpg" pelo caminho da sua foto -->
+                <img src="https://media.licdn.com/dms/image/v2/D4E03AQE_zleIUQWVlQ/profile-displayphoto-shrink_200_200/profile-displayphoto-shrink_200_200/0/1725315654852?e=1743638400&v=beta&t=bd6F3cIB6ac0LyFtmJUks9LYRXfqK-ck_iWlwb5c2yc" alt="Gabriel Melo">
+            </div>
+            <p class="about-text">
+                Meu nome é Gabriel Melo dos Santos Dias, tenho 17 anos e atualmente estudo no SESI Santos. Estou cursando o técnico em Redes de Computadores no SENAI. Estou motivado e aberto a novas oportunidades para expandir meu conhecimento e experiência na área de tecnologia. Tenho interesse em estágios e programas de jovem aprendiz para continuar aprendendo e ganhando experiência na área.
+            </p>
+        </div>
+    </section>
+
+    <!-- Cursos Realizados -->
+    <section id="courses">
+        <div class="section-title">
+            <h2>Cursos Realizados</h2>
+            <p>Aqui estão alguns dos cursos que eu já realizei, e que me agregaram conhecimento.</p>
+        </div>
+        <div class="timeline">
+            <div class="container-timeline left">
+                <div class="content-timeline">
+                    <h3>Projeto Cyber Leader</h3>
+                    <p>O Cyber Leader é um programa educacional que visa formar estudantes como líderes tecnológicos, com a responsabilidade de orientar seus colegas e contribuir para a melhoria da qualidade das aulas por meio do uso de tecnologias digitais, como o Office 365.</p>
+                </div>
+            </div>
+            <div class="container-timeline right">
+                <div class="content-timeline">
+                    <h3>Scrum Foundation Professional</h3>
+                    <p>O scrum Foundation Professional Certificate é uma certificação reconhecida internacionalmente que comprova o conhecimento e a compreensão dos princípios e práticas do Scrum.</p>
+                </div>
+            </div>
+            <div class="container-timeline left">
+                <div class="content-timeline">
+                    <h3>Rotary Youth Leadership Awards</h3>
+                    <p>Uma atividade que testou os nossos conhecimentos, além disso, fortificou o nosso trabalho em equipe, comunicação, relacionamentos interpessoais e foi bem eficiente, pois além de todas esses aprendizados, pude treinar meu inglês com outros participantes.</p>
+                </div>
+            </div>
+            <div class="container-timeline right">
+                <div class="content-timeline">
+                    <h3>Outras certificações</h3>
+                    <p>Além de todos esses cursos, possuo outros em minha carreira acadêmica. Em parceria com o SENAI, realizei um curso enriquecedor de Power BI, com carga horária de 40 horas. E uma certificação que durou um mês, sobre computação em nuvem, do Google. Ademais, tenho em meu currículo certificados de Inglês e Espanhol, além de diversas competências na área de tecnologia, todas com carga horária acima de 3 horas. E é de suma importância ressaltar que eu concluí um curso da IBM (International Business Machines Corporation) que me rendeu uma licença de fundamentos da inteligência artificial.
+            </div>
+            <!-- Adicione mais cursos conforme necessário -->
+        </div>
+    </section>
+    <section id="extracurricular">
+        <div class="section-title">
+            <h2>Atividades Extracurriculares</h2>
+            <p>Eventos e atividades que complementaram minha formação.</p>
+        </div>
+        <div class="timeline">
+            <div class="container-timeline left">
+                <div class="content-timeline">
+                    <h3>Desafio de Ideias</h3>
+                    <p>Participei do desafio de ideias do SENAI, onde alunos resolvem problemas reais de empresas do mercado portuário e industrial. Durante cinco dias intensos de estudo e trabalho, realizei um projeto para a empresa DP WORLD, e adquiri uma visão prática do mercado de trabalho, saindo da zona de conforto e evoluindo tanto como estudante quanto como pessoa. Essa experiência foi essencial para minha formação profissional.</p>
+                </div>
+            </div>
+            <div class="container-timeline right">
+                <div class="content-timeline">
+                    <h3>Rotary Youth Leadership Awards</h3>
+                    <p>O RYLA é um evento de âmbito internacional que se realiza em diversos países ao redor do mundo. O programa tem como objetivo promover e fomentar o espírito de liderança entre os jovens, desempenhando um papel crucial no desenvolvimento pessoal de indivíduos promissores.</p>
+                </div>
+            </div>
+            <!-- Adicione mais atividades aqui -->
+        </div>
+    </section>
+    <section id="formacao-academica" style="padding: 60px 20px;">
+        <div class="section-title" style="text-align: center; margin-bottom: 40px;">
+            <h2 style="font-size: 2.5rem; font-weight: 600; color: #333;">Formação Acadêmica</h2>
+            <p style="font-size: 1rem; color: #666;">Minha trajetória educacional.</p>
+        </div>
+        <div class="academic-container" style="display: flex; flex-direction: column; align-items: center;">
+            <!-- SENAI -->
+            <div class="academic-card" style="width: 90%; max-width: 800px; background-color: #fff; padding: 20px; margin-bottom: 20px; border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+                <h3 style="font-size: 1.8rem; font-weight: 600; color: #1a73e8;">Escola e Faculdade SENAI | 2024-2025</h3>
+                <p style="font-size: 1rem; color: #555; margin-top: 10px;">
+                    Atualmente cursando o Técnico em Redes de Computadores. Aqui desenvolvo habilidades técnicas e práticas relacionadas ao setor de tecnologia, me preparando para o mercado de trabalho com uma formação sólida.
+                </p>
+            </div>
+            <!-- SESI -->
+            <div class="academic-card" style="width: 90%; max-width: 800px; background-color: #fff; padding: 20px; margin-bottom: 20px; border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+                <h3 style="font-size: 1.8rem; font-weight: 600; color: #1a73e8;">Escola SESI | 2023-2025</h3>
+                <p style="font-size: 1rem; color: #555; margin-top: 10px;">
+                    Concluindo o Ensino Médio, onde desenvolvi não apenas conhecimento acadêmico, mas também habilidades sociais e valores fundamentais para meu crescimento pessoal e profissional.
+                </p>
+            </div>
+        </div>
+    </section>
+    <!-- Seção de Contato -->
+<section id="contact" style="padding: 60px 20px; background-color: #f9f9f9;">
+    <div class="section-title">
+        <h2 style="font-size: 2.5rem; font-weight: 600; color: #333;">Entre em Contato</h2>
+        <p style="font-size: 1rem; color: #666;">Aqui estão meus links para redes sociais e e-mail.</p>
+    </div>
+    <div class="contact-links" style="display: flex; justify-content: center; gap: 30px; flex-wrap: wrap;">
+        <!-- LinkedIn -->
+        <a href="www.linkedin.com/in/gabriel-melo-dos-santos-dias-90b842314" target="_blank" class="contact-link">
+            <div class="link-card">
+                <h3 style="font-size: 1.2rem; color: #1a73e8;">LinkedIn</h3>
+                <p style="color: #555;">Conecte-se comigo no LinkedIn.</p>
+            </div>
+        </a>
+        <!-- E-mail dentro de uma caixa de texto -->
+        <a href="mailto:seuemail@example.com" class="contact-link">
+            <div class="link-card">
+                <h3 style="font-size: 1.2rem; color: #1a73e8;">E-mail</h3>
+                <p style="color: #555;">Envie-me um e-mail: gabriel.msd@gmail.com</p>
+            </div>
+        </a>
+    </div>
+</section>
+
+<script>
+    // Animação dos links de contato
+    document.querySelectorAll('.contact-link').forEach(link => {
+        link.addEventListener('mouseover', () => {
+            link.querySelector('.link-card').classList.add('hover');
+        });
+        link.addEventListener('mouseout', () => {
+            link.querySelector('.link-card').classList.remove('hover');
+        });
+    });
+</script>
+
+<style>
+    .contact-link {
+        text-decoration: none;
+        display: block;
+        width: 250px;
+        max-width: 100%;
+        transition: transform 0.3s ease-in-out;
+    }
+
+    .link-card {
+        background-color: #fff;
+        padding: 20px;
+        text-align: center;
+        border-radius: 8px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s, box-shadow 0.3s, color 0.3s;
+    }
+
+    .link-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+        color: #1a73e8;
+    }
+
+    .link-card h3 {
+        font-weight: 600;
+        margin-bottom: 10px;
+    }
+
+    .link-card p {
+        font-size: 1rem;
+        color: #777;
+    }
+
+    /* Responsividade */
+    @media (max-width: 768px) {
+        .contact-links {
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .link-card {
+            width: 100%;
+        }
+    }
+</style>
+
+    
+    
+    <script>
+        // Função para mostrar as seções quando rolar a página
+        function revealSectionsOnScroll() {
+            const sections = document.querySelectorAll('section');
+            const windowHeight = window.innerHeight;
+
+            sections.forEach(section => {
+                const sectionTop = section.getBoundingClientRect().top;
+
+                if (sectionTop <= windowHeight - 100) {
+                    section.classList.add('visible');
+                }
+            });
+        }
+
+        // Escuta o evento de rolagem da página
+        window.addEventListener('scroll', revealSectionsOnScroll);
+
+        // Chama a função para garantir que as seções visíveis sejam mostradas ao carregar a página
+        window.addEventListener('load', revealSectionsOnScroll);
+    </script>
+</body>
+</html>
